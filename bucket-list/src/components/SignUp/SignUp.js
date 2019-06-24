@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { Link } from 'react-router-dom';
 
-const Login = () => {
+const SignUp = () => {
     const [username, updateUsername] = useState('');
+    const [email, updateEmail] = useState('');
     const [password, updatePassword] = useState('');
 
-    const signIn = creds => {
+    const register = creds => {
         axiosWithAuth()
-            .post('/api/login', creds)
+            .post('/api/register', creds)
             .then(res => {
                 console.log(res);
                 localStorage.setItem('token', res.data.payload)
@@ -18,21 +18,22 @@ const Login = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        signIn({ username, password });
+        register({ username, email, password })
         updateUsername('');
+        updateEmail('');
         updatePassword('');
     }
-    
+
     return (
-        <div onSubmit={onSubmit} className='login'>
-            <form>
+        <div>
+            <form onSubmit={onSubmit}>
                 <input required type='text' name='username' placeholder='Username' value={username} onChange={e => updateUsername(e.target.value)} />
-                <input required type='text' name='password' placeholder='Password' value={password} onChange={e => updatePassword(e.target.value)} />
-                <button>Log In</button>
+                <input required type='text' name='email' placeholder='Email' value={email} onChange={e => updateUsername(e.target.value)} />
+                <input required type='text' name='password' placeholder='Password' value={password} onChange={e => updateUsername(e.target.value)} />
+                <button>Register</button>
             </form>
-            <Link to='/sign-up'>Sign Up</Link>
         </div>
     )
 }
 
-export default Login;
+export default SignUp;
