@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+
 
 import './SignUp.scss'
 
@@ -36,6 +38,7 @@ const SignUp = props => {
                 <input required type='password' name='password' placeholder='Password' value={password} onChange={e => updatePassword(e.target.value)} />
                 <button>Register</button>
             </form>
+            <Link to='/'>Login</Link>
         </div>
     )
 }
