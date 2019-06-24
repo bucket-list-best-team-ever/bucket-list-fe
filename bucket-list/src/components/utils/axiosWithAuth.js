@@ -7,6 +7,6 @@ export const axiosWithAuth = () => {
         headers: {
             Authorization: token
         },
-        baseURL: 'https://bucket-list-be.herokuapp.com/'
+        baseURL: 'https://bucket-list-be.herokuapp.com'
     })
 }
