@@ -4,7 +4,7 @@ const BucketList = props => {
 
     return (
         <div>
-            Welcome!
+            <h1>It's Working</h1>
         </div>
     )
 }

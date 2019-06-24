@@ -10,6 +10,11 @@ import SignUp from './components/SignUp/SignUp';
 function App() {
   return (
     <div className="App">
+      <div>
+        <header>
+          <h1>Bucket List!</h1>
+        </header>
+      </div>
       <Route exact path='/' component={Login} />
       <Route path='/sign-up' component={SignUp} />
       <PrivateRoute path='/bucket-list' component={BucketList} />
