@@ -15,9 +15,9 @@ function App() {
           <h1>Bucket List!</h1>
         </header>
       </div>
-      <Route exact path='/' component={Login} />
-      <Route path='/sign-up' component={SignUp} />
-      <PrivateRoute path='/bucket-list' component={BucketList} />
+        <Route exact path='/' component={Login} />
+        <Route path='/sign-up' component={SignUp} />
+        <PrivateRoute path='/bucket-list' component={BucketList} />
     </div>
   );
 }
