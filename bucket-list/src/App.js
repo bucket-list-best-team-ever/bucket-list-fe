@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import PrivateRoute from './components/utils/PrivateRoute';
 import Login from './components/Login/Login';
 import BucketList from './components/BucketList/BucketList';
+import IndividualItem from './components/IndividualItem/IndividualItem';
 import SignUp from './components/SignUp/SignUp';
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
       </div>
         <Route exact path='/' component={Login} />
         <Route path='/sign-up' component={SignUp} />
-        <PrivateRoute path='/bucket-list' component={BucketList} />
+        <PrivateRoute exact path='/bucket-list' component={BucketList} />
+        <PrivateRoute path='/bucket-list/item/:id' component={IndividualItem} />
     </div>
   );
 }

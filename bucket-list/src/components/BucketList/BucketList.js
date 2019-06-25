@@ -36,7 +36,7 @@ const BucketList = props => {
     return (
         <div>
             {(items !== 0) ? items.map(item => (
-                <BucketListItem key={Math.random()} item={item} />
+                <BucketListItem key={item.id} item={item} />
             )) : <p>Loading...</p>}
         </div>
     )
