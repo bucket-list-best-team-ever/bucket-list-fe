@@ -42,6 +42,7 @@ const IndividualItem = props => {
     }
     console.log(posts)
 
+
     const newPost = () => {
         const id = props.match.params.id
         axiosWithAuth() 
