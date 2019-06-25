@@ -33,16 +33,17 @@ const Posts = props => {
     const submitImages = e => {
         e.preventDefault();
         addImages();
+        props.history.push('/bucket-list')
     }
 
     console.log(images)
 
     return (
         <div>
+            <p>{props.post.message}</p>
             {(images === null) ? <h2>No Images</h2> : images.map(image => (
                 <img src={image.url} alt='' key={image.id} />
             ))}
-            <p>{props.post.message}</p>
             <form onSubmit={submitImages}>
                 <input type='text' name='image' placeholder='Add An Image...' value={newImage} onChange={e => addNewImage(e.target.value)} />
                 <button>Submit</button>
