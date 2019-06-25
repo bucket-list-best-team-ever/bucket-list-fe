@@ -3,6 +3,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const Posts = props => {
     const [images, getImages] = useState(null)
+    const [newImage, addNewImage] = useState('')
 
     useEffect(() => {
         viewImages();
@@ -20,6 +21,20 @@ const Posts = props => {
         }
     }
 
+    const addImages = () => {
+        axiosWithAuth()
+            .post(`/api/item/post/image`, { post_id: props.post.id, url: newImage })
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => console.log(err))
+    }
+
+    const submitImages = e => {
+        e.preventDefault();
+        addImages();
+    }
+
     console.log(images)
 
     return (
@@ -28,6 +43,10 @@ const Posts = props => {
                 <img src={image.url} alt='' key={image.id} />
             ))}
             <p>{props.post.message}</p>
+            <form onSubmit={submitImages}>
+                <input type='text' name='image' placeholder='Add An Image...' value={newImage} onChange={e => addNewImage(e.target.value)} />
+                <button>Submit</button>
+            </form>
         </div>
     )
 }
