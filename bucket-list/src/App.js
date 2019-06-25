@@ -8,6 +8,7 @@ import BucketList from './components/BucketList/BucketList';
 import SignUp from './components/SignUp/SignUp';
 
 function App() {
+
   return (
     <div className="App">
       <div>
