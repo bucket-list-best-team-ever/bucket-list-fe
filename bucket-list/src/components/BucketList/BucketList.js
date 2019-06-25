@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import BucketListItem from '../BucketListItem/BucketListItem';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
@@ -38,6 +39,8 @@ const BucketList = props => {
             {(items !== 0) ? items.map(item => (
                 <BucketListItem key={item.id} item={item} />
             )) : <p>Loading...</p>}
+
+            <button><Link to='/bucket-list/add-item'>Add An Item!</Link></button>
         </div>
     )
 }

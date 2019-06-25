@@ -11,7 +11,7 @@ const IndividualItem = props => {
     useEffect(() => {
         viewItem();
         viewPosts();
-    })
+    }, [])
 
     const viewItem = () => {
         const id = props.match.params.id
@@ -45,7 +45,7 @@ const IndividualItem = props => {
     const newPost = () => {
         const id = props.match.params.id
         axiosWithAuth() 
-            .post(`/api/item/post`, { id, post })
+            .post(`/api/item/post`, { item_id: id, message: post })
             .then(res => {
                 console.log(res)
                 addPost('')
