@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const BucketListItem = props => {
-    const [completed, markCompleted] = useState(false)
+    const [completed, markItemCompleted] = useState(props.item.completed)
     const green = {
         backgroundColor: 'green'
     }
@@ -10,16 +11,28 @@ const BucketListItem = props => {
         backgroundColor: 'red'
     }
     const id = props.item.id;
-    const toggle = e => {
-        e.preventDefault();
-        markCompleted(!completed)
+
+    const markCompleted = () => {
+        axiosWithAuth()
+            .put(`/api/item/${id}`, { user_id: props.userId, description: props.item.description, completed: !completed})
+            .then(res => {
+                console.log(res)
+                markItemCompleted(!completed)
+            })
+            .catch(err => console.log(err))
     }
+
+    const onSubmit = e => {
+        e.preventDefault();
+        markCompleted();
+    }
+
     return (
         <div>
             <h2>{props.item.description}</h2>
             <h3>{props.item.created}</h3>
             <button><Link to={`/bucket-list/item/${id}`}>About</Link></button>
-            <button onClick={toggle} style={(completed) ? green : red }>Completed</button>
+            <button onClick={onSubmit} style={(completed) ? green : red }>Completed</button>
         </div>
     )
 }

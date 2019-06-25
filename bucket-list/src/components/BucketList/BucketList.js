@@ -6,12 +6,14 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const BucketList = props => {
     const [items, setItems] = useState(0)
+    const [id, setId] = useState(0)
 
     useEffect(() => {
         axiosWithAuth()
             .get(`/api/user`)
             .then(res => {
                 console.log(res)
+                setId(res.data.user.id)
                 viewItems(res.data.user.id)
             })
             .catch(err => console.log(err));
@@ -37,7 +39,7 @@ const BucketList = props => {
     return (
         <div>
             {(items !== 0) ? items.map(item => (
-                <BucketListItem key={item.id} item={item} />
+                <BucketListItem key={item.id} item={item} userId={id} />
             )) : <p>Loading...</p>}
 
             <button><Link to='/bucket-list/add-item'>Add An Item!</Link></button>
