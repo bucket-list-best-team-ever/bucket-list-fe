@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 
 import BucketListItem from '../BucketListItem/BucketListItem';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import FriendsList from '../FriendsList/FriendsList';
 
 const BucketList = props => {
     const [items, setItems] = useState(0)
     const [id, setId] = useState(0)
+    const [friends, setFriends] = useState(0)
 
     useEffect(() => {
         axiosWithAuth()
@@ -15,9 +17,10 @@ const BucketList = props => {
                 console.log(res)
                 setId(res.data.user.id)
                 viewItems(res.data.user.id)
+                getFriends()
             })
             .catch(err => console.log(err));
-    })
+    }, [])
 
     const viewItems = id => {
         if (items === 0) {
@@ -34,6 +37,17 @@ const BucketList = props => {
     }
     console.log(items)
 
+    const getFriends = () => {
+        axiosWithAuth()
+            .get(`/api/user/friends`)
+            .then(res => {
+                console.log(res);
+                setFriends(res.data.friends)
+            })
+            .catch(err => console.log(err))
+    }
+    console.log(friends)
+
 
 
     return (
@@ -44,6 +58,9 @@ const BucketList = props => {
 
             <button><Link to='/bucket-list/add-item'>Add An Item!</Link></button>
             <button><Link to='/bucket-list/add-friend'>Add A Friend!</Link></button>
+            {(friends !== 0) ? friends.map(friend => (
+                <FriendsList key={friend.friend_id} friend={friend} />
+            )) : <p>No Friends</p>}
         </div>
     )
 }
