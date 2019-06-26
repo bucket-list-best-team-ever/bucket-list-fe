@@ -9,9 +9,15 @@ import IndividualItem from './components/IndividualItem/IndividualItem';
 import SignUp from './components/SignUp/SignUp';
 import BucketListAddItem from './components/BucketListAddItem/BucketListAddItem';
 import AddFriend from './components/AddFriend/AddFriend';
+import FriendsBucketList from './components/FriendsBucketList/FriendsBucketList';
 
 
-function App() {
+function App(props) {
+
+  const logOut = () => {
+    localStorage.removeItem('token');
+    props.history.push('/');
+  }
 
   return (
     <div className="App">
@@ -19,6 +25,7 @@ function App() {
         <header>
           <h1>Bucket List!</h1>
           <Link to='/bucket-list'>Home</Link>
+          <button onClick={logOut}>Logout</button>
         </header>
       </div>
         <Route exact path='/' component={Login} />
@@ -27,6 +34,7 @@ function App() {
         <PrivateRoute path='/bucket-list/item/:id' component={IndividualItem} />
         <PrivateRoute path='/bucket-list/add-item' component={BucketListAddItem} />
         <PrivateRoute path='/bucket-list/add-friend' component={AddFriend} />
+        <PrivateRoute path='/bucket-list/friend/bucket-list' component={FriendsBucketList} />
     </div>
   );
 }
