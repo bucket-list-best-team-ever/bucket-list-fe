@@ -67,7 +67,7 @@ const IndividualItem = props => {
             <h2>{item.description}</h2>
             <h3>{item.created}</h3>
             {(posts !== 0) ? posts.map(post => (
-                <Posts key={post.id} post={post} />
+                <Posts {...props} key={post.id} post={post} />
             )) : <p>Loading...</p>}
             <form onSubmit={onSubmit}>
                 <input type='text' name='post' placeholder='Add A Comment...' value={post} onChange={e => addPost(e.target.value)} />
