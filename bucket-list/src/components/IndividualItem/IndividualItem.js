@@ -57,6 +57,22 @@ const IndividualItem = props => {
             .catch(err => console.log(err))
     }
 
+    const deleteItem = () => {
+        const id = props.match.params.id
+        axiosWithAuth()
+            .delete(`/api/item/${id}`)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => console.log(err))
+    }
+
+    const onDelete = e => {
+        e.preventDefault();
+        deleteItem();
+        props.history.push('/bucket-list')
+    }
+
     const onSubmit = e => {
         e.preventDefault();
         newPost()
@@ -73,6 +89,7 @@ const IndividualItem = props => {
                 <input type='text' name='post' placeholder='Add A Comment...' value={post} onChange={e => addPost(e.target.value)} />
                 <button>Submit</button>
             </form>
+            <button onClick={onDelete}>Delete Bucket List Item</button>
         </div>
     )
 }
