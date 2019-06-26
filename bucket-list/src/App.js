@@ -10,6 +10,7 @@ import SignUp from './components/SignUp/SignUp';
 import BucketListAddItem from './components/BucketListAddItem/BucketListAddItem';
 import AddFriend from './components/AddFriend/AddFriend';
 import FriendsBucketList from './components/FriendsBucketList/FriendsBucketList';
+import ThankYou from './components/ThankYou/ThankYou';
 
 
 function App(props) {
@@ -30,6 +31,7 @@ function App(props) {
       </div>
         <Route exact path='/' component={Login} />
         <Route path='/sign-up' component={SignUp} />
+        <PrivateRoute path='/thank-you' component={ThankYou} />
         <PrivateRoute exact path='/bucket-list' component={BucketList} />
         <PrivateRoute path='/bucket-list/item/:id' component={IndividualItem} />
         <PrivateRoute path='/bucket-list/add-item' component={BucketListAddItem} />

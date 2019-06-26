@@ -17,7 +17,7 @@ const FriendsBucketList = props => {
 
     const markCompleted = () => {
         axiosWithAuth()
-            .put(`/api/item/${id}`, { user_id: props.userId, description: props.item.description, completed: !completed})
+            .put(`/api/item/${id}`, { user_id: props.id, description: props.item.description, completed: !completed})
             .then(res => {
                 console.log(res)
                 markItemCompleted(!completed)

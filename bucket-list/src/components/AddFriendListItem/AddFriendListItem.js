@@ -2,18 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-const BucketListAddItem = props => {
+const AddFriendListItem = props => {
     const [item, addItem] = useState('')
     const [id, addId] = useState(0)
 
     useEffect(() => {
-        axiosWithAuth()
-            .get(`/api/user`)
-            .then(res => {
-                console.log(res)
-                addId(res.data.user.id)
-            })
-            .catch(err => console.log(err));
+        addId(props.id)
     }, [])
 
     const addNewItem = () => {
@@ -22,7 +16,6 @@ const BucketListAddItem = props => {
             .then(res => {
                 console.log(res)
                 addItem('')
-                props.history.push('/bucket-list')
             })
             .catch(err => console.log(err))
     }
@@ -30,6 +23,7 @@ const BucketListAddItem = props => {
     const onSubmit = e => {
         e.preventDefault();
         addNewItem();
+        props.history.push('/thank-you');
     }
 
 
@@ -43,4 +37,4 @@ const BucketListAddItem = props => {
     )
 }
 
-export default BucketListAddItem;
+export default AddFriendListItem;

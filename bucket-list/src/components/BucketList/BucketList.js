@@ -59,7 +59,7 @@ const BucketList = props => {
             <button><Link to='/bucket-list/add-item'>Add An Item!</Link></button>
             <button><Link to='/bucket-list/add-friend'>Add A Friend!</Link></button>
             {(friends !== 0) ? friends.map(friend => (
-                <FriendsList key={friend.friend_id} friend={friend} />
+                <FriendsList {...props} key={friend.friend_id} friend={friend} />
             )) : <p>No Friends</p>}
         </div>
     )

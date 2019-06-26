@@ -3,9 +3,11 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 import BucketListItem from '../BucketListItem/BucketListItem';
 import FriendsBucketList from '../FriendsBucketList/FriendsBucketList';
+import AddFriendListItem from '../AddFriendListItem/AddFriendListItem';
 
 const FriendsList = props => {
     const [friendsList, updateFriendsList] = useState(0)
+    const [friendId, updateFriendId] = useState(null)
 
     useEffect(() => {
         getFriendId();
@@ -18,6 +20,7 @@ const FriendsList = props => {
                 console.log(res)
                 let newFriend = res.data.users.filter(user => user.email === props.friend.email)
                 getFriendsList(newFriend[0].id)
+                updateFriendId(newFriend[0].id)
             })
             .catch(err => console.log(err))
         }
@@ -38,6 +41,7 @@ const FriendsList = props => {
             {(friendsList !== 0) ? friendsList.map(item => (
                 <FriendsBucketList key={item.id} item={item} userId={item.id} />
             )) : <p>Loading...</p>}
+            {(friendId === null) ? null : <AddFriendListItem {...props} id={friendId} />}
         </div>
     )
 }
