@@ -43,6 +43,7 @@ const BucketList = props => {
             )) : <p>Loading...</p>}
 
             <button><Link to='/bucket-list/add-item'>Add An Item!</Link></button>
+            <button><Link to='/bucket-list/add-friend'>Add A Friend!</Link></button>
         </div>
     )
 }
