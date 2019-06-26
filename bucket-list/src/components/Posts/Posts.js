@@ -55,6 +55,16 @@ const Posts = props => {
             })
             .catch(err => console.log(err))
     }
+    
+    const deletePost = () => {
+        axiosWithAuth()
+            .delete(`/api/item/post/${props.post.id}`)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => console.log(err));
+    }
+
 
     const submitImages = e => {
         e.preventDefault();
@@ -68,11 +78,18 @@ const Posts = props => {
         props.history.push('/bucket-list')
     }
 
+    const onDeletePost = e => {
+        e.preventDefault();
+        deletePost();
+        props.history.push('/bucket-list')
+    }
+
     console.log(images)
 
     return (
         <div>
             <p>{props.post.message}</p>
+            <button onClick={onDeletePost}>Delete Post</button>
             {(images === 0) ? <h2>No Images</h2> : images.map(image => (
                 <img src={image.url} alt='' key={image.id} />
             ))}
