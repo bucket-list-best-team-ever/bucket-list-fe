@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import './BucketListAddItem.scss';
 
 const BucketListAddItem = props => {
     const [item, addItem] = useState('')
@@ -22,7 +23,6 @@ const BucketListAddItem = props => {
             .then(res => {
                 console.log(res)
                 addItem('')
-                props.history.push('/bucket-list')
             })
             .catch(err => console.log(err))
     }
@@ -30,11 +30,13 @@ const BucketListAddItem = props => {
     const onSubmit = e => {
         e.preventDefault();
         addNewItem();
+        props.history.push('/bucket-list')
     }
 
 
     return (
-        <div>
+        <div className='add-item-form'>
+            <h3>Add An Item to Your Bucket List!</h3>
             <form onSubmit={onSubmit}>
                 <input type='text' name='item' placeholder='Add an Item!' value={item} onChange={e => addItem(e.target.value)} />
                 <button>Submit</button>

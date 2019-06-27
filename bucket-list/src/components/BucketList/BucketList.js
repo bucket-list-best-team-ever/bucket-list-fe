@@ -5,6 +5,8 @@ import BucketListItem from '../BucketListItem/BucketListItem';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import FriendsList from '../FriendsList/FriendsList';
 
+import './BucketList.scss';
+
 const BucketList = props => {
     const [items, setItems] = useState(0)
     const [id, setId] = useState(0)
@@ -55,12 +57,16 @@ const BucketList = props => {
 
     return (
         <div>
-            {(items !== 0) ? items.map(item => (
-                <BucketListItem key={item.id} item={item} userId={id} />
-            )) : <p>Loading...</p>}
+            <div className='list-buttons'>
+                <Link to='/bucket-list/add-item'><button className='add-item-button'>Add An Item!</button></Link>
+                <Link to='/bucket-list/add-friend'><button className='add-friend-button'>Add A Friend!</button></Link>
+            </div>
+            <div className='list'>
+                {(items !== 0) ? items.map(item => (
+                    <BucketListItem key={item.id} item={item} userId={id} />
+                )) : <p>Loading...</p>}
+            </div>
 
-            <button><Link to='/bucket-list/add-item'>Add An Item!</Link></button>
-            <button><Link to='/bucket-list/add-friend'>Add A Friend!</Link></button>
             {(friends !== 0) ? friends.map(friend => (
                 <FriendsList {...props} key={friend.friend_id} friend={friend} />
             )) : <p>No Friends</p>}

@@ -1,16 +1,19 @@
 .bucket-list-item {
-    width: 25%;
+    margin-top: 1.5em;
+    width: 30%;
     box-sizing: border-box;
     padding: 5px;
-    background-color: #E3E4E6;
-    border: 2px solid red;
+    background-color: #FFFFFF;
+    border: 2px solid #C14953;
+    border-radius: 15px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.7);
 
     h2 {
         color: #C14953;
         font-family: Courgette;
         text-align: center;
         text-decoration: underline;
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
 
     .posts-div {
@@ -33,10 +36,12 @@
             color: #FFFFFF;
             background-color: #C14953;
             outline: none;
+            
 
             &:hover {
                 color: #C14953;
                 background-color: #FFFFFF;
+                border: 1px solid #C14953;
             }
         }
 

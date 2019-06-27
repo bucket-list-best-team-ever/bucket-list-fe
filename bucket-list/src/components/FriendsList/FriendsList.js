@@ -5,6 +5,8 @@ import BucketListItem from '../BucketListItem/BucketListItem';
 import FriendsBucketList from '../FriendsBucketList/FriendsBucketList';
 import AddFriendListItem from '../AddFriendListItem/AddFriendListItem';
 
+import './FriendsList.scss';
+
 const FriendsList = props => {
     const [friendsList, updateFriendsList] = useState(0)
     const [friendId, updateFriendId] = useState(null)
@@ -39,10 +41,12 @@ const FriendsList = props => {
 
     return (
         <div>
-            <p>{props.friend.name}</p>
-            {(friendsList !== 0) ? friendsList.map(item => (
-                <FriendsBucketList key={item.id} item={item} userId={item.id} />
-            )) : <p>Loading...</p>}
+            <p className='friend-name'>{`${props.friend.name}'s Bucket List`}</p>
+            <div className='friend-list'>
+                {(friendsList !== 0) ? friendsList.map(item => (
+                    <FriendsBucketList key={item.id} item={item} userId={item.id} />
+                )) : <p>Loading...</p>}
+            </div>
             {(friendId === null) ? null : <AddFriendListItem {...props} id={friendId} />}
         </div>
     )

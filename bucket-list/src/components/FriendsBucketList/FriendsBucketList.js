@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import BucketListPosts from '../BucketListPosts/BucketListPosts';
 
+import './FriendsBucketList.scss';
+
 const FriendsBucketList = props => {
     const [completed, markItemCompleted] = useState(props.item.completed)
     const [posts, setPosts] = useState(0)
@@ -45,14 +47,17 @@ const FriendsBucketList = props => {
     }
 
     return (
-        <div>
+        <div className='friend-list-item'>
             <h2>{props.item.description}</h2>
-            <h3>{props.item.created}</h3>
-            {(posts !== 0) ? posts.map(post => (
-                <BucketListPosts key={post.id} post={post} />
-            )) : <p>Loading...</p>}
-            <button><Link to={`/bucket-list/friend/item/${id}`}>About</Link></button>
-            <button onClick={onSubmit} style={(completed) ? green : red }>Completed</button>
+            <div className='friend-posts-div'>
+                {(posts !== 0) ? posts.map(post => (
+                    <BucketListPosts key={post.id} post={post} />
+                )) : <p>Loading...</p>}
+            </div>
+            <div className='friend-buttons'>
+                <Link to={`/bucket-list/friend/item/${id}`}><button className='friend-update-button'>Update</button></Link>
+                <button className='friend-completed' onClick={onSubmit} style={(completed) ? green : red }>Completed</button>
+            </div>
         </div>
     )
 }

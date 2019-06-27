@@ -1,0 +1,44 @@
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.list-buttons {
+    text-align: center;
+    margin-top: .75em;
+
+    .add-item-button {
+            width: 30%;
+            height: 35px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: Raleway;
+            cursor: pointer;
+            color: #FFFFFF;
+            background-color: #C14953;
+            outline: none;
+    
+            &:hover {
+                color: #C14953;
+                background-color: #FFFFFF;
+            }
+    }
+    
+    .add-friend-button {
+        width: 30%;
+        height: 35px;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-family: Raleway;
+        cursor: pointer;
+        color: #FFFFFF;
+        background-color: #C14953;
+        outline: none;
+    
+        &:hover {
+            color: #C14953;
+            background-color: #FFFFFF;
+        }
+    }
+}

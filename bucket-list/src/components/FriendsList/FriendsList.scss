@@ -1,0 +1,14 @@
+.friend-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+.friend-name {
+    margin-top: 1.5em;
+    font-size: 2rem;
+    text-align: center;
+    font-family: Courgette;
+    color: #C14953;
+    text-decoration: underline;
+}
