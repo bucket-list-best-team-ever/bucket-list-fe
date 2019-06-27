@@ -36,6 +36,23 @@ This project was created using Create React App.
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1"
 ```
+
+# Dummy Data
+
+```
+[
+    {
+        email: test@test.com,
+        name: test,
+        password: test
+    },
+    {
+        email: test2@test.com,
+        name: test2,
+        password: test
+    }
+]
+
 # Installation
 
 After forking and cloning the project you should make sure you have the necessary dependencies. Once you do you can `yarn start` from inside the `bucket-list` folder. 
