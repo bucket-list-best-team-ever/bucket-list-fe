@@ -11,15 +11,23 @@ const BucketList = props => {
     const [friends, setFriends] = useState(0)
 
     useEffect(() => {
-        axiosWithAuth()
-            .get(`/api/user`)
-            .then(res => {
-                setId(res.data.user.id)
-                viewItems(res.data.user.id)
-                getFriends()
-            })
-            .catch(err => console.log(err));
+        let isSubscribed = true;
+        if (isSubscribed) {
+            getUserId();
+            getFriends();
+        }
+        return () => isSubscribed = false
     }, [])
+
+    const getUserId = () => {
+        axiosWithAuth()
+        .get(`/api/user`)
+        .then(res => {
+            setId(res.data.user.id)
+            viewItems(res.data.user.id)
+        })
+        .catch(err => console.log(err));
+    }
 
     const viewItems = id => {
         if (items === 0) {
@@ -35,12 +43,12 @@ const BucketList = props => {
     }
 
     const getFriends = () => {
-        axiosWithAuth()
-            .get(`/api/user/friends`)
-            .then(res => {
-                setFriends(res.data.friends)
-            })
-            .catch(err => console.log(err))
+            axiosWithAuth()
+                .get(`/api/user/friends`)
+                .then(res => {
+                    setFriends(res.data.friends)
+                })
+                .catch(err => console.log(err))
     }
 
 

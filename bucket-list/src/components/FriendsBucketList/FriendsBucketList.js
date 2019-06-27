@@ -43,7 +43,6 @@ const FriendsBucketList = props => {
         e.preventDefault();
         markCompleted();
     }
-    console.log(posts)
 
     return (
         <div>

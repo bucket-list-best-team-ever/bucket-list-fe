@@ -10,8 +10,8 @@ const AddFriend = props => {
         axiosWithAuth()
             .get(`/api/users`)
             .then(res => {
-                console.log(res)
                 let newFriend = res.data.users.filter(user => user.email === friendEmail)
+                console.log(newFriend)
                 console.log(newFriend[0].id)
                 addFriendId(newFriend[0].id)
                 addFriendName(newFriend[0].name)
@@ -23,13 +23,10 @@ const AddFriend = props => {
         axiosWithAuth()
             .post(`/api/user/friends/${friendId}`)
             .then(res => {
-                console.log(res)
-                addFriendId(null)
+                console.log(res);
             })
             .catch(err => console.log(err))
     }
-
-    console.log(friendId)
     
     const findFriend = e => {
         e.preventDefault()
@@ -40,7 +37,7 @@ const AddFriend = props => {
     const addFriend = e => {
         e.preventDefault();
         createNewFriend();
-        props.history.push('/bucket-list')
+        // props.history.push('/bucket-list')
     }
 
 

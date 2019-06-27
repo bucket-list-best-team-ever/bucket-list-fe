@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import BucketListPosts from '../BucketListPosts/BucketListPosts';
 
+import './BucketListItem.scss'
+
 const BucketListItem = props => {
     const [completed, markItemCompleted] = useState(props.item.completed)
     const [posts, setPosts] = useState(0)
@@ -19,12 +21,11 @@ const BucketListItem = props => {
         axiosWithAuth()
             .put(`/api/item/${id}`, { user_id: props.userId, description: props.item.description, completed: !completed})
             .then(res => {
-                console.log(res)
+
                 markItemCompleted(!completed)
             })
             .catch(err => console.log(err))
     }
-    console.log(props.item.id)
 
     useEffect(() => {
         viewPosts();
@@ -35,7 +36,7 @@ const BucketListItem = props => {
             axiosWithAuth()
                 .get(`/api/item/${props.item.id}/posts`)
                 .then(res => {
-                    console.log(res)
+
                     setPosts(res.data.posts)
                 })
                 .catch(err => console.log(err))
@@ -46,17 +47,19 @@ const BucketListItem = props => {
         e.preventDefault();
         markCompleted();
     }
-    console.log(posts)
 
     return (
-        <div>
+        <div className='bucket-list-item'>
             <h2>{props.item.description}</h2>
-            <h3>{props.item.created}</h3>
-            {(posts !== 0) ? posts.map(post => (
-                <BucketListPosts key={post.id} post={post} />
-            )) : <p>Loading...</p>}
-            <button><Link to={`/bucket-list/item/${id}`}>About</Link></button>
-            <button onClick={onSubmit} style={(completed) ? green : red }>Completed</button>
+            <div className='posts-div'>
+                {(posts !== 0) ? posts.map(post => (
+                    <BucketListPosts key={post.id} post={post} />
+                )) : <p>Loading...</p>}
+            </div>
+            <div className='item-buttons'>
+                <Link to={`/bucket-list/item/${id}`}><button className='update-button'>Update</button></Link>
+                <button className='completed' onClick={onSubmit} style={(completed) ? green : red }>Completed</button>
+            </div>
         </div>
     )
 }

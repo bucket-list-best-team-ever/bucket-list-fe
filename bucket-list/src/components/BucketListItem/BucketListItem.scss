@@ -1,0 +1,53 @@
+.bucket-list-item {
+    width: 25%;
+    box-sizing: border-box;
+    padding: 5px;
+    background-color: #E3E4E6;
+    border: 2px solid red;
+
+    h2 {
+        color: #C14953;
+        font-family: Courgette;
+        text-align: center;
+        text-decoration: underline;
+        font-size: 1.5rem;
+    }
+
+    .posts-div {
+        height: 200px;
+        overflow-y: auto;
+
+    }
+
+    .item-buttons {
+        display: flex;
+        flex-direction: column;
+
+        .update-button {
+            width: 100%;
+            height: 35px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: Raleway;
+            cursor: pointer;
+            color: #FFFFFF;
+            background-color: #C14953;
+            outline: none;
+
+            &:hover {
+                color: #C14953;
+                background-color: #FFFFFF;
+            }
+        }
+
+        .completed {
+            height: 35px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: Raleway;
+            cursor: pointer;
+            color: #FFFFFF;
+            outline: none;
+        }
+    }
+}

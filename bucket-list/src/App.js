@@ -26,8 +26,10 @@ function App(props) {
       <div>
         <header>
           <h1>Bucket List!</h1>
-          <Link to='/bucket-list'>Home</Link>
-          <button onClick={logOut}>Logout</button>
+          <div className='links'>
+            <Link to='/bucket-list'><h2>Home</h2></Link>
+            <button onClick={logOut}>Logout</button>
+          </div>
         </header>
       </div>
         <Route exact path='/' component={Login} />

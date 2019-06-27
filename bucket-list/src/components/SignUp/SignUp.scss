@@ -5,10 +5,10 @@
     margin-top: 5em;
     margin-left: 25em;
     margin-right: 25em;
-    border: 3px solid #E5DCC5;
-    background-color: #848FA5;
+    border: 3px solid #C14953;
+    background-color: #E3E4E6;
     border-radius: 10px;
-    box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.5);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 
     form {
         display: flex;
@@ -23,19 +23,30 @@
             box-sizing: border-box;
             padding-left: 5px;
             font-size: 1.5rem;
+            outline: none;
         }
 
         button {
             height: 50px;
             border-radius: 10px;
             font-size: 1.5rem;
-            color: #E5DCC5;
+            font-family: Raleway;
+            cursor: pointer;
+            color: #FFFFFF;
             background-color: #C14953;
+            outline: none;
 
             &:hover {
                 color: #C14953;
-                background-color: #E5DCC5;
+                background-color: #FFFFFF;
             }
         }
+    }
+    
+    .login-link {
+        margin-bottom: 1em;
+        color: #C14953;
+        font-family: Raleway;
+        font-size: 1.25rem;
     }
 }

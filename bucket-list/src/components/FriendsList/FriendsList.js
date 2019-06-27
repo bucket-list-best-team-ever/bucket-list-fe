@@ -12,12 +12,16 @@ const FriendsList = props => {
     useEffect(() => {
         getFriendId();
     }, [])
+    console.log(props.friend)
 
     const getFriendId = () => {
         axiosWithAuth()
             .get(`/api/users`)
             .then(res => {
+                console.log(res)
+                console.log(props.friend.email)
                 let newFriend = res.data.users.filter(user => user.email === props.friend.email)
+                console.log(newFriend)
                 getFriendsList(newFriend[0].id)
                 updateFriendId(newFriend[0].id)
             })

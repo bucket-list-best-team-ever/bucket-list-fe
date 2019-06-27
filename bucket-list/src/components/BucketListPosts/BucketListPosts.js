@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
+import './BucketListPosts.scss'
+
 const BucketListPosts = props => {
     const [images, getImages] = useState(null)
 
@@ -13,7 +15,6 @@ const BucketListPosts = props => {
             axiosWithAuth()
                 .get(`/api/item/post/${props.post.id}/images`)
                 .then(res => {
-                    console.log(res)
                     getImages(res.data.images)
                 })
                 .catch(err => console.log(err))
@@ -21,8 +22,8 @@ const BucketListPosts = props => {
     }
 
     return (
-        <div>
-            <p>{props.post.message}</p>
+        <div className='bucket-list-posts'>
+            <p className='comments'>{props.post.message}</p>
             {(images === null) ? <h2>No Images</h2> : images.map(image => (
                 <img src={image.url} alt='' key={image.id} />
             ))}

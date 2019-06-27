@@ -62,7 +62,6 @@ const IndividualItem = props => {
                 addPost('')
                 setPosts(0)
                 setItem(0)
-                props.history.push('/bucket-list')
             })
             .catch(err => console.log(err))
     }
@@ -96,6 +95,7 @@ const IndividualItem = props => {
     const onSubmit = e => {
         e.preventDefault();
         newPost()
+        props.history.push('/bucket-list')
     }
 
     const onUpdate = e => {

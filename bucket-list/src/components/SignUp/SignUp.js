@@ -38,7 +38,7 @@ const SignUp = props => {
                 <input required type='password' name='password' placeholder='Password' value={password} onChange={e => updatePassword(e.target.value)} />
                 <button>Register</button>
             </form>
-            <Link to='/'>Login</Link>
+            <Link to='/'><p className='login-link'>Login</p></Link>
         </div>
     )
 }
