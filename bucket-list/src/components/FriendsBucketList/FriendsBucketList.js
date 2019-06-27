@@ -52,7 +52,7 @@ const FriendsBucketList = props => {
             {(posts !== 0) ? posts.map(post => (
                 <BucketListPosts key={post.id} post={post} />
             )) : <p>Loading...</p>}
-            <button><Link to={`/bucket-list/item/${id}`}>About</Link></button>
+            <button><Link to={`/bucket-list/friend/item/${id}`}>About</Link></button>
             <button onClick={onSubmit} style={(completed) ? green : red }>Completed</button>
         </div>
     )

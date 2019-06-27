@@ -11,6 +11,7 @@ import BucketListAddItem from './components/BucketListAddItem/BucketListAddItem'
 import AddFriend from './components/AddFriend/AddFriend';
 import FriendsBucketList from './components/FriendsBucketList/FriendsBucketList';
 import ThankYou from './components/ThankYou/ThankYou';
+import FriendIndividualItem from './components/FriendIndividualItem/FriendIndividualItem';
 
 
 function App(props) {
@@ -34,6 +35,7 @@ function App(props) {
         <PrivateRoute path='/thank-you' component={ThankYou} />
         <PrivateRoute exact path='/bucket-list' component={BucketList} />
         <PrivateRoute path='/bucket-list/item/:id' component={IndividualItem} />
+        <PrivateRoute path='/bucket-list/friend/item/:id' component={FriendIndividualItem} />
         <PrivateRoute path='/bucket-list/add-item' component={BucketListAddItem} />
         <PrivateRoute path='/bucket-list/add-friend' component={AddFriend} />
         <PrivateRoute path='/bucket-list/friend/bucket-list' component={FriendsBucketList} />
