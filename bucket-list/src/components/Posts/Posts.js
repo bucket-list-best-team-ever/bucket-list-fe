@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
+import './Posts.scss';
+
 const Posts = props => {
     const [images, getImages] = useState(0)
     const [newImage, addNewImage] = useState('')
@@ -80,6 +82,7 @@ const Posts = props => {
 
     const onDeletePost = e => {
         e.preventDefault();
+        deleteImage();
         deletePost();
         props.history.push('/bucket-list')
     }
@@ -87,9 +90,8 @@ const Posts = props => {
     console.log(images)
 
     return (
-        <div>
-            <p>{props.post.message}</p>
-            <button onClick={onDeletePost}>Delete Post</button>
+        <div className='post'>
+            <p className='message'>{props.post.message}</p>
             {(images === 0) ? <h2>No Images</h2> : images.map(image => (
                 <img src={image.url} alt='' key={image.id} />
             ))}
@@ -99,6 +101,7 @@ const Posts = props => {
                 <button>Submit</button>
             </form> : <button onClick={onDelete}>Delete Image</button>
             }
+            <button onClick={onDeletePost}>Delete Post</button>
         </div>
     )
 }

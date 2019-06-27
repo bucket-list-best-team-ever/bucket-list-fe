@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import './ThankYou.scss';
+
 const ThankYou = () => {
     return (
-        <div>
+        <div className='thank-you'>
             <h2>Thank You For Submitting an Item To Your Friend's List!</h2>
-            <button><Link to='/bucket-list'>Home</Link></button>
+            <Link to='/bucket-list'><button>Home</button></Link>
         </div>
     )
 }

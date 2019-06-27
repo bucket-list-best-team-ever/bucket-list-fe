@@ -69,7 +69,7 @@ const BucketList = props => {
 
             {(friends !== 0) ? friends.map(friend => (
                 <FriendsList {...props} key={friend.friend_id} friend={friend} />
-            )) : <p>No Friends</p>}
+            )) : <p className='no-friends'>No Friends</p>}
         </div>
     )
 }

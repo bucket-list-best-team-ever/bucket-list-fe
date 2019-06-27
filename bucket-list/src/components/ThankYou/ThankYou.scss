@@ -1,0 +1,25 @@
+.thank-you {
+    h2 {
+        font-family: Raleway;
+        text-align: center;
+        font-size: 2rem;
+        margin: 1.5em 0;
+    }
+    button {
+        height: 50px;
+        border-radius: 10px;
+        font-size: 1.5rem;
+        font-family: Raleway;
+        cursor: pointer;
+        color: #FFFFFF;
+        background-color: #C14953;
+        outline: none;
+        display: block;
+        margin: 0 auto;
+
+        &:hover {
+            color: #C14953;
+            background-color: #FFFFFF;
+        }
+    }
+}

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 import Posts from '../Posts/Posts';
+import './FriendIndividualItem.scss';
+import '../Posts/Posts.scss';
 
 const FriendIndividualItem = props => {
     const [item, setItem] = useState(0)
@@ -61,12 +63,15 @@ const FriendIndividualItem = props => {
     }
 
     return (
-        <div>
-            <h2>{item.description}</h2>
-            <h3>{item.created}</h3>
-            {(posts !== 0) ? posts.map(post => (
-                <Posts {...props} key={post.id} post={post} />
-            )) : <p>Loading...</p>}
+        <div className='friend-individual-item'>
+            <div className='friend-item-description'>
+                <h2>{item.description}</h2>
+            </div>
+            <div className='friend-posts-container'>
+                {(posts !== 0) ? posts.map(post => (
+                    <Posts {...props} key={post.id} post={post} />
+                )) : <p>Loading...</p>}
+            </div>
             <form onSubmit={onSubmit}>
                 <input type='text' name='post' placeholder='Add A Comment...' value={post} onChange={e => addPost(e.target.value)} />
                 <button>Submit</button>

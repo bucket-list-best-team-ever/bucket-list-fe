@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 import Posts from '../Posts/Posts';
+import './IndividualItem.scss';
 
 const IndividualItem = props => {
     const [item, setItem] = useState(0)
@@ -105,20 +106,23 @@ const IndividualItem = props => {
     }
 
     return (
-        <div>
-            <h2>{item.description}</h2>
-            <h3>{item.created}</h3>
-            {(posts !== 0) ? posts.map(post => (
-                <Posts {...props} key={post.id} post={post} />
-            )) : <p>Loading...</p>}
+        <div className='individual-item'>
+            <div className='item-description'>
+                <h2>{item.description}</h2>
+                <form onSubmit={onUpdate}>
+                    <input type='text' name='update' placeholder='Update Title...' value={description} onChange={e => addDescription(e.target.value)} /> 
+                    <button>Update</button>
+                </form>
+                <button onClick={onDelete}>Delete Bucket List Item</button>
+            </div>
+            <div className='posts-container'>
+                {(posts !== 0) ? posts.map(post => (
+                    <Posts {...props} key={post.id} post={post} />
+                )) : <p>Loading...</p>}
+            </div>
             <form onSubmit={onSubmit}>
                 <input type='text' name='post' placeholder='Add A Comment...' value={post} onChange={e => addPost(e.target.value)} />
                 <button>Submit</button>
-            </form>
-            <button onClick={onDelete}>Delete Bucket List Item</button>
-            <form onSubmit={onUpdate}>
-                <input type='text' name='update' placeholder='Update Title...' value={description} onChange={e => addDescription(e.target.value)} /> 
-                <button>Update</button>
             </form>
         </div>
     )

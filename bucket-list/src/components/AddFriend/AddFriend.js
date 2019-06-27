@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
+import './AddFriend.scss';
+
 const AddFriend = props => {
     const [friendId, addFriendId] = useState(null)
     const [friendEmail, addFriendEmail] = useState('')
@@ -43,7 +45,7 @@ const AddFriend = props => {
 
 
     return (
-        <div>
+        <div className='add-friend-form'>
             <form onSubmit={findFriend}>
                 <input type='text' name='email' value={friendEmail} onChange={e => addFriendEmail(e.target.value)} />
                 <button>Find Friend</button>
