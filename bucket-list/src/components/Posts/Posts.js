@@ -7,8 +7,9 @@ const Posts = props => {
     const [images, getImages] = useState(0)
     const [newImage, addNewImage] = useState('')
     const [imageId, addImageId] = useState(null)
+    const [update, addUpdate] = useState('')
 
-    console.log(imageId)
+    console.log(props.id)
 
     useEffect(() => {
         viewImages();
@@ -67,6 +68,15 @@ const Posts = props => {
             .catch(err => console.log(err));
     }
 
+    const updatePost = () => {
+        axiosWithAuth()
+            .put(`/api/item/post/${props.post.id}`, { item_id: props.id, message: update})
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => console.log(err))
+    }
+
 
     const submitImages = e => {
         e.preventDefault();
@@ -87,11 +97,21 @@ const Posts = props => {
         props.history.push('/bucket-list')
     }
 
+    const onUpdate = e => {
+        e.preventDefault();
+        updatePost();
+        props.history.push('/bucket-list')
+    }
+
     console.log(images)
 
     return (
         <div className='post'>
             <p className='message'>{props.post.message}</p>
+            <form onSubmit={onUpdate}>
+                <input type='text' name='updatePost' placeholder='Update Post...' value={update} onChange={e => addUpdate(e.target.value)} />
+                <button>Update</button>
+            </form>
             {(images === 0) ? <h2>No Images</h2> : images.map(image => (
                 <img src={image.url} alt='' key={image.id} />
             ))}

@@ -59,7 +59,7 @@ const BucketList = props => {
         <div>
             <div className='list-buttons'>
                 <Link to='/bucket-list/add-item'><button className='add-item-button'>Add An Item!</button></Link>
-                <Link to='/bucket-list/add-friend'><button className='add-friend-button'>Add A Friend!</button></Link>
+                <Link to='/bucket-list/add-friend'><button className='add-friend-button'>Manage Friends!</button></Link>
             </div>
             <div className='list'>
                 {(items !== 0) ? items.map(item => (

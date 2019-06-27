@@ -42,6 +42,20 @@ const AddFriend = props => {
         // props.history.push('/bucket-list')
     }
 
+    const deleteFriend = () => {
+        axiosWithAuth()
+            .delete(`/api/user/friends/${friendId}`)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => console.log(err))
+    }
+
+    const onDelete = e => {
+        e.preventDefault();
+        deleteFriend()
+    }
+
 
 
     return (
@@ -51,7 +65,7 @@ const AddFriend = props => {
                 <button>Find Friend</button>
             </form>
             {(friendName === null) ? <h2>Search For Friends!</h2> : <h2>{friendName}</h2>}
-            {(friendName === null) ? null : <button onClick={addFriend}>Add Friend!</button>}
+            {(friendName === null) ? null :<div> <button onClick={addFriend}>Add Friend!</button> <button onClick={onDelete}>Delete Friend!</button> </div>}
         </div>
     )
 }

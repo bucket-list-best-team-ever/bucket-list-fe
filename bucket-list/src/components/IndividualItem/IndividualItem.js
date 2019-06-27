@@ -10,6 +10,7 @@ const IndividualItem = props => {
     const [post, addPost] = useState('')
     const [description, addDescription] = useState('')
     const [user_id, updateUserId] = useState(null)
+    const [itemId, updateItemId] = useState(props.match.params.id)
 
     useEffect(() => {
         getId();
@@ -117,7 +118,7 @@ const IndividualItem = props => {
             </div>
             <div className='posts-container'>
                 {(posts !== 0) ? posts.map(post => (
-                    <Posts {...props} key={post.id} post={post} />
+                    <Posts {...props} key={post.id} id={itemId} post={post} />
                 )) : <p>Loading...</p>}
             </div>
             <form onSubmit={onSubmit}>
