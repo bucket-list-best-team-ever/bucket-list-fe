@@ -14,7 +14,6 @@ const BucketList = props => {
         axiosWithAuth()
             .get(`/api/user`)
             .then(res => {
-                console.log(res)
                 setId(res.data.user.id)
                 viewItems(res.data.user.id)
                 getFriends()
@@ -27,7 +26,6 @@ const BucketList = props => {
             axiosWithAuth(id)
                 .get(`/api/user/${id}/items`)
                 .then(res => {
-                    console.log(res)
                     setItems(res.data.items)
                 })
                 .catch(err => console.log(err))
@@ -35,18 +33,15 @@ const BucketList = props => {
             return
         }
     }
-    console.log(items)
 
     const getFriends = () => {
         axiosWithAuth()
             .get(`/api/user/friends`)
             .then(res => {
-                console.log(res);
                 setFriends(res.data.friends)
             })
             .catch(err => console.log(err))
     }
-    console.log(friends)
 
 
 

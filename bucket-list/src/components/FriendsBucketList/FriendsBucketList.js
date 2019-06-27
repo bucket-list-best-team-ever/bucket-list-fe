@@ -19,12 +19,10 @@ const FriendsBucketList = props => {
         axiosWithAuth()
             .put(`/api/item/${id}`, { user_id: props.id, description: props.item.description, completed: !completed})
             .then(res => {
-                console.log(res)
                 markItemCompleted(!completed)
             })
             .catch(err => console.log(err))
     }
-    console.log(props.item.id)
 
     useEffect(() => {
         viewPosts();
@@ -35,7 +33,6 @@ const FriendsBucketList = props => {
             axiosWithAuth()
                 .get(`/api/item/${props.item.id}/posts`)
                 .then(res => {
-                    console.log(res)
                     setPosts(res.data.posts)
                 })
                 .catch(err => console.log(err))

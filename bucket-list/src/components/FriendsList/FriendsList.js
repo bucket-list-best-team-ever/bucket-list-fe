@@ -17,7 +17,6 @@ const FriendsList = props => {
         axiosWithAuth()
             .get(`/api/users`)
             .then(res => {
-                console.log(res)
                 let newFriend = res.data.users.filter(user => user.email === props.friend.email)
                 getFriendsList(newFriend[0].id)
                 updateFriendId(newFriend[0].id)
@@ -29,7 +28,6 @@ const FriendsList = props => {
             axiosWithAuth()
             .get(`/api/user/${id}/items`)
             .then(res => {
-                console.log(res);
                 updateFriendsList(res.data.items)
             })
             .catch(err => console.log(err))

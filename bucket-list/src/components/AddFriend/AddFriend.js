@@ -12,7 +12,7 @@ const AddFriend = props => {
             .then(res => {
                 console.log(res)
                 let newFriend = res.data.users.filter(user => user.email === friendEmail)
-                console.log(newFriend)
+                console.log(newFriend[0].id)
                 addFriendId(newFriend[0].id)
                 addFriendName(newFriend[0].name)
             })
@@ -40,8 +40,6 @@ const AddFriend = props => {
     const addFriend = e => {
         e.preventDefault();
         createNewFriend();
-        addFriendId(null)
-        addFriendName(null)
         props.history.push('/bucket-list')
     }
 
