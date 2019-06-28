@@ -52,6 +52,7 @@ This project was created using Create React App.
         password: test
     }
 ]
+```
 
 # Installation
 
